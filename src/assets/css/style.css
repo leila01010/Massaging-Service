@@ -1,0 +1,104 @@
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazir.eot');
+    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir.woff2') format('woff2'),
+    url('../fonts/Vazir.woff') format('woff'),
+    url('../fonts/Vazir.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazir-Bold.eot');
+    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir-Bold.woff2') format('woff2'),
+    url('../fonts/Vazir-Bold.woff') format('woff'),
+    url('../fonts/Vazir-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazir-Medium.eot');
+    src: url('../fonts/Vazir-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir-Medium.woff2') format('woff2'),
+    url('../fonts/Vazir-Medium.woff') format('woff'),
+    url('../fonts/Vazir-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazir-Light.eot');
+    src: url('../fonts/Vazir-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir-Light.woff2') format('woff2'),
+    url('../fonts/Vazir-Light.woff') format('woff'),
+    url('../fonts/Vazir-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Vazir, sans-serif;
+    background: #f7f7f7;
+}
+a {
+    text-decoration: none;
+}
+.list {
+    margin-right: 225px;
+    padding: 30px;
+}
+.create {
+    position: relative;
+    top: 200px;
+    left: 20%;
+    margin-right: 225px;
+    background-color: #fff;
+    padding: 50px;
+    width: 40%;
+}
+.showMassage {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+ }
+.box-card {
+    width: 550px;
+    height: 300px;
+    text-align: right;
+    direction: rtl;
+}
+.text {
+    font-size: 15px;
+}
+
+.el-card__body {
+    padding: 30px;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+.clearfix:after {
+    clear: both
+}
+.cls_input {
+    margin-bottom: 30px;
+}
+.cls_input2 {
+    margin-top: 20px;
+}
+.el-form-item__label {
+    float: right !important;
+    padding: 0 0 0 12px !important;
+    direction: rtl;
+}
+.el-form-item__content {
+    margin-right: 120px;
+    margin-left: 0 !important;
+}
