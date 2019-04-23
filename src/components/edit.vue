@@ -25,8 +25,8 @@
         },
         created () {
             axios.patch('http://user.fitamin.ir/messagingservice/public/api/message/' + this.$route.params.id , {
-                title: this.title.trim(),
-                body: this.body.trim()
+                title: this.title,
+                body: this.body
             })
             .then(response => {
                 console.log(response);

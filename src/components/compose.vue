@@ -1,9 +1,10 @@
 <template>
     <div class="create">
         <el-form :model="dynamicValidateForm" :rules="rules" ref="dynamicValidateForm" label-width="120px" class="demo-dynamic">
-            <el-form-item label="To" prop="to">
-                <el-input type="number" v-model.number="dynamicValidateForm.to" autocomplete="off"></el-input>
-            </el-form-item>
+            <!--<el-form-item label="To" prop="to">-->
+                <!--<el-input type="number" v-model.number="dynamicValidateForm.to" autocomplete="off"></el-input>-->
+            <!--</el-form-item>-->
+            <div>{{ to }}</div>
             <el-form-item label="From" prop="from">
                 <el-input type="number" v-model.number="dynamicValidateForm.from" autocomplete="off"></el-input>
             </el-form-item>
@@ -21,11 +22,12 @@
 </template>
 <script>
     import axios from 'axios'
+    import { EventBus } from '../Events.js';
     export default {
         data() {
             return {
+                to: '',
                 dynamicValidateForm: {
-                    to: '',
                     from: '',
                     subject: '',
                     massage: ''
@@ -50,6 +52,11 @@
                 }
             };
         },
+        mounted() {
+            EventBus.$on('to_id', data => {
+                this.to = data;
+            });
+        },
         methods: {
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
@@ -61,7 +68,7 @@
                     }
                 });
                 axios.post('http://user.fitamin.ir/messagingservice/public/api/message', {
-                    to_id: this.dynamicValidateForm.to,
+                    to: this.to,
                     from_id: this.dynamicValidateForm.from,
                     title: this.dynamicValidateForm.subject,
                     body: this.dynamicValidateForm.massage

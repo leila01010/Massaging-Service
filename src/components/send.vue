@@ -6,7 +6,7 @@
                 <template slot-scope="scope">
                     <!--<el-button @click="$router.push('user/' + scope.row.id)" type="primary" size="medium" plain>نمایش</el-button>-->
                     <router-link
-                            :to="'edit/' + scope.row.id"
+                            :to="'/edit/' + scope.row.id"
                             class="el-button el-button--primary el-button--medium is-round is-plain"
                             style="float: right;"
                     >ویرایش</router-link>
@@ -59,7 +59,7 @@
             }
         },
         created () {
-            axios.get('http://user.fitamin.ir/messagingservice/public/api/message/sent/3')
+            axios.get('http://user.fitamin.ir/messagingservice/public/api/message/sent/' + this.$route.params.id)
                 .then(response => {
                     console.log(response);
                     this.sendBox = response.data.data;

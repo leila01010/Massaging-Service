@@ -6,9 +6,13 @@
                 @open="handleOpen"
                 @close="handleClose">
             <router-link to="/" tag="el-menu-item">
-                <i class="el-icon-message"></i>
-                <span>Inbox</span>
+                <i class="el-icon-tickets"></i>
+                <span>Users</span>
             </router-link>
+            <!--<router-link :to="'/' + this.$route.params.id" tag="el-menu-item">-->
+                <!--<i class="el-icon-message"></i>-->
+                <!--<span>Inbox</span>-->
+            <!--</router-link>-->
             <router-link to="/compose" tag="el-menu-item">
                 <i class="el-icon-edit"></i>
                 <span>Compose</span>
