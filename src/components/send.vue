@@ -16,7 +16,7 @@
                 <template slot-scope="scope">
                     <!--<el-button @click="$router.push('user/' + scope.row.id)" type="primary" size="medium" plain>نمایش</el-button>-->
                     <router-link
-                            :to="'show/' + scope.row.id"
+                            :to="'/show/' + scope.row.id"
                             class="el-button el-button--info el-button--medium is-round"
                             style="float: right;"
                     >نمایش</router-link>

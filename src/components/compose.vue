@@ -1,13 +1,13 @@
 <template>
     <div class="create">
+        <!--<div>{{ to }}</div>-->
         <el-form :model="dynamicValidateForm" :rules="rules" ref="dynamicValidateForm" label-width="120px" class="demo-dynamic">
-            <!--<el-form-item label="To" prop="to">-->
-                <!--<el-input type="number" v-model.number="dynamicValidateForm.to" autocomplete="off"></el-input>-->
-            <!--</el-form-item>-->
-            <div>{{ to }}</div>
-            <el-form-item label="From" prop="from">
-                <el-input type="number" v-model.number="dynamicValidateForm.from" autocomplete="off"></el-input>
+            <el-form-item label="To" prop="to">
+                <el-input type="number" v-model.number="dynamicValidateForm.to" autocomplete="off"></el-input>
             </el-form-item>
+            <!--<el-form-item label="From" prop="from">-->
+                <!--<el-input type="number" v-model.number="dynamicValidateForm.from" autocomplete="off"></el-input>-->
+            <!--</el-form-item>-->
             <el-form-item label="Subject" prop="subject">
                 <el-input v-model="dynamicValidateForm.subject"></el-input>
             </el-form-item>
@@ -22,12 +22,12 @@
 </template>
 <script>
     import axios from 'axios'
-    import { EventBus } from '../Events.js';
+    // import { eventBus } from '../main.js';
     export default {
         data() {
             return {
-                to: '',
                 dynamicValidateForm: {
+                    to: '',
                     from: '',
                     subject: '',
                     massage: ''
@@ -37,10 +37,10 @@
                         { required: true, message: 'this input is required'},
                         { type: 'number', message: 'value must be a number'}
                     ],
-                    from: [
-                        { required: true, message: 'this input is required'},
-                        { type: 'number', message: 'value must be a number'}
-                    ],
+                    // from: [
+                    //     { required: true, message: 'this input is required'},
+                    //     { type: 'number', message: 'value must be a number'}
+                    // ],
                     subject: [
                         { required: true, message: 'Please input subject', trigger: 'blur' },
                         { min: 5, max: 20, message: 'Length should be 5 to 20', trigger: 'blur' }
@@ -52,11 +52,11 @@
                 }
             };
         },
-        mounted() {
-            EventBus.$on('to_id', data => {
-                this.to = data;
-            });
-        },
+        // created() {
+        //     eventBus.$on('info', (data) => {
+        //         this.to = data;
+        //     })
+        // },
         methods: {
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
@@ -68,8 +68,8 @@
                     }
                 });
                 axios.post('http://user.fitamin.ir/messagingservice/public/api/message', {
-                    to: this.to,
-                    from_id: this.dynamicValidateForm.from,
+                    to_id: this.dynamicValidateForm.to,
+                    from_id: this.$route.params.id,
                     title: this.dynamicValidateForm.subject,
                     body: this.dynamicValidateForm.massage
                 })

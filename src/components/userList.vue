@@ -5,31 +5,34 @@
                 <template slot-scope="scope">
                     <!--<el-button @click="$router.push('user/' + scope.row.id)" type="primary" size="medium" plain>نمایش</el-button>-->
                     <router-link
-                            :to="'send/' + scope.row.id"
+                            :to="'user/' + scope.row.id"
                             class="el-button el-button--primary el-button--medium is-round is-plain"
-                            style="float: right;"
-                    >Send <i class="el-icon-caret-left el-icon-left"></i></router-link>
+                            @click="sendData()"
+                            style="float: right;">Show
+                        <i class="el-icon-caret-left el-icon-left"></i>
+                    </router-link>
                 </template>
             </el-table-column>
-            <el-table-column align="right" width="150px">
-                <template slot-scope="scope">
-                    <router-link
-                            :to="'compose/' + scope.row.id"
-                            class="el-button el-button--info el-button--medium is-round is-plain"
-                            style="float: right;"
-                            @click="sendId"
-                    >Compose <i class="el-icon-edit el-icon-left"></i></router-link>
-                </template>
-            </el-table-column>
-            <el-table-column align="right" width="150px">
-                <template slot-scope="scope">
-                    <router-link
-                            :to="'inbox/' + scope.row.id"
-                            class="el-button el-button--success el-button--medium is-round is-plain"
-                            style="float: right;"
-                    >Inbox <i class="el-icon-message el-icon-left"></i></router-link>
-                </template>
-            </el-table-column>
+            <!--<el-table-column align="right" width="150px">-->
+                <!--<template slot-scope="scope">-->
+                    <!--<router-link-->
+                            <!--:to="'compose/' + scope.row.id"-->
+                            <!--class="el-button el-button&#45;&#45;info el-button&#45;&#45;medium is-round is-plain"-->
+                            <!--style="float: right;">Compose-->
+                        <!--<i class="el-icon-edit el-icon-left"></i>-->
+                    <!--</router-link>-->
+                <!--</template>-->
+            <!--</el-table-column>-->
+            <!--<el-table-column align="right" width="150px">-->
+                <!--<template slot-scope="scope">-->
+                    <!--<router-link-->
+                            <!--:to="'inbox/' + scope.row.id"-->
+                            <!--class="el-button el-button&#45;&#45;success el-button&#45;&#45;medium is-round is-plain"-->
+                            <!--style="float: right;">Inbox-->
+                        <!--<i class="el-icon-message el-icon-left"></i>-->
+                    <!--</router-link>-->
+                <!--</template>-->
+            <!--</el-table-column>-->
             <el-table-column
                     prop="email"
                     label="Email"
@@ -53,7 +56,7 @@
 
 <script>
     import axios from 'axios'
-    import { EventBus } from '../Events.js';
+    // import { eventBus } from '../main.js';
     export default {
         data () {
             return {
@@ -70,12 +73,6 @@
                 .catch(err => {
                     console.log(err)
                 })
-        },
-        methods: {
-            sendId (){
-                EventBus.$emit('to_id', this.tableUsers.id);
-                console.log(this.tableUsers.id);
-            }
         }
     }
 </script>
