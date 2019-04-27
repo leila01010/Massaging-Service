@@ -8,13 +8,13 @@
                     <router-link
                             :to="'/edit/' + scope.row.id"
                             class="el-button el-button--primary el-button--medium is-round is-plain"
+                            @click="sendData()"
                             style="float: right;"
                     >ویرایش</router-link>
                 </template>
             </el-table-column>
             <el-table-column>
                 <template slot-scope="scope">
-                    <!--<el-button @click="$router.push('user/' + scope.row.id)" type="primary" size="medium" plain>نمایش</el-button>-->
                     <router-link
                             :to="'/show/' + scope.row.id"
                             class="el-button el-button--info el-button--medium is-round"
@@ -47,14 +47,17 @@
                     width="100px">
             </el-table-column>
         </el-table>
+        <div>{{ infoId }}</div>
     </section>
 </template>
 
 <script>
     import axios from 'axios'
+    import { eventBus } from '../main.js';
     export default {
         data () {
             return {
+                infoId: this.$route.params.id,
                 sendBox: []
             }
         },
@@ -68,6 +71,12 @@
                 .catch(err => {
                     console.log(err)
                 })
+        },
+        methods: {
+            sendData () {
+                eventBus.$emit('info',this.infoId);
+                console.log(this.infoId);
+            }
         }
     }
 </script>

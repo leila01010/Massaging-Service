@@ -46,7 +46,6 @@
                             </router-link>
                         </el-col>
                     </el-row>
-
                 </el-card>
             </el-col>
         </el-row>

@@ -1,38 +1,18 @@
 <template>
     <section class="list">
-        <el-table :data="tableUsers">
+        <el-table :data="tableUsers" v-loading="loading">
             <el-table-column align="right" width="150px">
                 <template slot-scope="scope">
                     <!--<el-button @click="$router.push('user/' + scope.row.id)" type="primary" size="medium" plain>نمایش</el-button>-->
                     <router-link
                             :to="'user/' + scope.row.id"
                             class="el-button el-button--primary el-button--medium is-round is-plain"
-                            @click="sendData()"
-                            style="float: right;">Show
-                        <i class="el-icon-caret-left el-icon-left"></i>
+                            style="float: right;">
+                        <span class="el-icon-caret-left"></span>
+                        <span>Show</span>
                     </router-link>
                 </template>
             </el-table-column>
-            <!--<el-table-column align="right" width="150px">-->
-                <!--<template slot-scope="scope">-->
-                    <!--<router-link-->
-                            <!--:to="'compose/' + scope.row.id"-->
-                            <!--class="el-button el-button&#45;&#45;info el-button&#45;&#45;medium is-round is-plain"-->
-                            <!--style="float: right;">Compose-->
-                        <!--<i class="el-icon-edit el-icon-left"></i>-->
-                    <!--</router-link>-->
-                <!--</template>-->
-            <!--</el-table-column>-->
-            <!--<el-table-column align="right" width="150px">-->
-                <!--<template slot-scope="scope">-->
-                    <!--<router-link-->
-                            <!--:to="'inbox/' + scope.row.id"-->
-                            <!--class="el-button el-button&#45;&#45;success el-button&#45;&#45;medium is-round is-plain"-->
-                            <!--style="float: right;">Inbox-->
-                        <!--<i class="el-icon-message el-icon-left"></i>-->
-                    <!--</router-link>-->
-                <!--</template>-->
-            <!--</el-table-column>-->
             <el-table-column
                     prop="email"
                     label="Email"
@@ -60,14 +40,17 @@
     export default {
         data () {
             return {
-                tableUsers: []
+                tableUsers: [],
+                loading: false
             }
         },
         created () {
+            this.loading = true;
             axios.get('http://user.fitamin.ir/messagingservice/public/api/users')
                 .then(response => {
                     console.log(response);
                     this.tableUsers = response.data;
+                    this.loading = false;
                     // console.log(this.tableData);
                 })
                 .catch(err => {

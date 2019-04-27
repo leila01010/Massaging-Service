@@ -1,13 +1,9 @@
 <template>
     <div class="create">
-        <!--<div>{{ to }}</div>-->
         <el-form :model="dynamicValidateForm" :rules="rules" ref="dynamicValidateForm" label-width="120px" class="demo-dynamic">
             <el-form-item label="To" prop="to">
                 <el-input type="number" v-model.number="dynamicValidateForm.to" autocomplete="off"></el-input>
             </el-form-item>
-            <!--<el-form-item label="From" prop="from">-->
-                <!--<el-input type="number" v-model.number="dynamicValidateForm.from" autocomplete="off"></el-input>-->
-            <!--</el-form-item>-->
             <el-form-item label="Subject" prop="subject">
                 <el-input v-model="dynamicValidateForm.subject"></el-input>
             </el-form-item>
@@ -37,10 +33,6 @@
                         { required: true, message: 'this input is required'},
                         { type: 'number', message: 'value must be a number'}
                     ],
-                    // from: [
-                    //     { required: true, message: 'this input is required'},
-                    //     { type: 'number', message: 'value must be a number'}
-                    // ],
                     subject: [
                         { required: true, message: 'Please input subject', trigger: 'blur' },
                         { min: 5, max: 20, message: 'Length should be 5 to 20', trigger: 'blur' }
