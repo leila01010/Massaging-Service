@@ -12,7 +12,6 @@
                     v-model="body">
             </el-input>
             <el-button class="cls_input" type="success" @click="edit()" icon="el-icon-check" circle></el-button>
-            <div>{{ from }}</div>
         </el-card>
     </div>
 </template>

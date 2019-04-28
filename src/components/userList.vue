@@ -1,5 +1,30 @@
 <template>
     <section class="list">
+        <div class="title--box clearfix">
+            <h2 class="primary--title">لیست حرکات</h2>
+            <!-- <el-button-group>
+              <el-button icon="el-icon-plus" type="success" @click.prevent="$router.push('exerciseList/32')"> افزون حرکت</el-button>
+            </el-button-group> -->
+        </div>
+        <el-form ref="form" label-position="top">
+            <el-row :gutter="20" class="ExerciseList--form">
+                <el-col :span="8">
+                    <el-form-item label="نام کاربر">
+                        <el-input v-model="searchedItem" @keyup.enter.native="onSubmit"></el-input>
+                    </el-form-item>
+                </el-col>
+
+                <el-col :span="8">
+                    <el-form-item label="">
+                        <el-button
+                                :disabled="!termExist"
+                                icon="el-icon-search" size="medium" type="primary" @click="onSubmit()"
+                                style="margin-top: 50px">جستجو
+                        </el-button>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+        </el-form>
         <el-table :data="tableUsers" v-loading="loading">
             <el-table-column align="right" width="150px">
                 <template slot-scope="scope">
@@ -41,7 +66,26 @@
         data () {
             return {
                 tableUsers: [],
+                searchedItem: '',
+                searched: false,
                 loading: false
+            }
+        },
+        methods: {
+            onSubmit() {
+                if(!this.searchedItem)
+                    return;
+                this.searchExercise()
+            },
+            searchExercise() {
+                this.loading = true;
+                this.$http.get('http://user.fitamin.ir/messagingservice/public/api/users' + "/search/" + this.searchedItem)
+                    .then(response => {
+                        console.log(response);
+                        this.tableUsers = response.data;
+                        this.loading = false;
+                        this.searched = true;
+                    });
             }
         },
         created () {
@@ -56,6 +100,11 @@
                 .catch(err => {
                     console.log(err)
                 })
+        },
+        computed : {
+            termExist(){
+                return this.searchedItem.length > 1 ;
+            }
         }
     }
 </script>

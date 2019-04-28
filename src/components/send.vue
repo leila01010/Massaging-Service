@@ -5,12 +5,13 @@
             <el-table-column>
                 <template slot-scope="scope">
                     <!--<el-button @click="$router.push('user/' + scope.row.id)" type="primary" size="medium" plain>نمایش</el-button>-->
-                    <router-link
-                            :to="'/edit/' + scope.row.id"
-                            class="el-button el-button--primary el-button--medium is-round is-plain"
-                            @click="sendData()"
-                            style="float: right;"
-                    >ویرایش</router-link>
+                    <!--<router-link-->
+                            <!--:to="'/edit/' + scope.row.id"-->
+                            <!--class="el-button el-button&#45;&#45;primary el-button&#45;&#45;medium is-round is-plain"-->
+                            <!--style="float: right;">-->
+                        <!--<div @click="sendData()">ویرایش</div>-->
+                    <!--</router-link>-->
+                    <el-button @click="$router.push('/edit/' + scope.row.id)" type="primary" size="medium" target="_blank" plain round>dddddd</el-button>
                 </template>
             </el-table-column>
             <el-table-column>
